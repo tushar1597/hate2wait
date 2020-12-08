@@ -3,10 +3,22 @@ import {  } from '../constants/constants';
 import { connect } from 'react-redux';
 import { Switch, Redirect, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
+import Users from './users';
 
 class LandingPage extends Component {
+    constructor(){
+        super();
+        this.state={
+            counter : 0
+        }
+    }
     componentDidUpdate(prev_props){
         
+    }
+    incrementCounter = () => {
+        this.setState({
+            counter : ++this.state.counter,
+        })
     }
     componentDidMount() {
         
@@ -14,7 +26,10 @@ class LandingPage extends Component {
     
     render() {
         return(
-            <h1>Home Page</h1>
+        <Fragment>
+        <p>The value is {this.state.counter}</p>
+        <button onClick={this.incrementCounter}>Increment</button>
+        </Fragment>
         )
     }
 }
